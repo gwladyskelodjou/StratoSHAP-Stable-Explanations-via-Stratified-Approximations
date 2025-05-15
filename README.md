@@ -1,1 +1,4 @@
-# StratoSHAP-Stable-Explanations-via-Stratified-Approximations
+# StratoSHAP: Stable Explanations via Stratified Approximations
+
+The widespread use of black-box machine learning models has sparked significant interest in explainable AI, particularly in methods that provide trustworthy insights into model predictions. Among the existing feature attribution techniques, Shapley values are well-known 
+due to their strong theoretical guarantees grounded in cooperative game theory. However, computing the exact Shapley values is intractable, and existing approximation methods usually rely on random sampling, which introduces instability and undermines the reliability of explanations. We propose StratoSHAP, a stratified approximation scheme that ensures stable Shapley estimates. We provide analytical bounds for the estimation bias, and show that StratoSHAP retains the core Shapley properties such as efficiency, symmetry, and fairness while exhibiting competitive empirical performance. 
