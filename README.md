@@ -1,4 +1,4 @@
-### The repository will be completed by May 22, 2025, the deadline for supplementary materials.
+# The repository will be completed by May 22, 2025, the deadline for supplementary materials.
 
 ## StratoSHAP: Stable Explanations via Stratified Approximations
 
