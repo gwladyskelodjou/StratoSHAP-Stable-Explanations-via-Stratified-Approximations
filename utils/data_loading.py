@@ -33,8 +33,6 @@ class Data:
             "parkinson": self._load_parkinson,
             "thoraric": self._load_thoraric,
             "thyroid": self._load_thyroid,
-            
-            "dummy": self._load_dummy,
 
             "image": self._load_image,
         }
@@ -91,31 +89,6 @@ class Data:
         data[num_cols] = self._preprocess_data(data[num_cols])
 
         return data.drop("Target", axis=1), data["Target"]
-    
-    def _load_dummy(self):
-         
-        """Load and preprocess the Adult census dataset."""
-
-        file_path = os.path.join(self.data_dir, "adult.data")
-        columns = ["Age", "Workclass", "fnlwgt", "Education", "Education-Num",
-                   "Marital Status", "Occupation", "Relationship", "Race", "Sex",
-                   "Capital Gain", "Capital Loss", "Hours per week", "Country", "Target"]
-        data = pd.read_csv(file_path, names=columns, na_values="?")
-        
-        # Drop unused features
-        data.drop(["Education", "fnlwgt"], axis=1, inplace=True)
-        data["Target"] = (data["Target"] == " >50K").astype(int)
-
-        cat_cols = ["Workclass", "Marital Status", "Occupation", "Relationship", "Race", "Sex", "Country"]
-        num_cols = ["Age", "Capital Gain", "Capital Loss", "Hours per week"]
-        
-        for col in cat_cols:
-            data[col] = self._encode_labels(data[col])        
-        data[num_cols] = self._preprocess_data(data[num_cols])
-
-        data["Dummy"] = 0
-        return data.drop("Target", axis=1), data["Target"]
-
 
     def _load_german(self):
         """Load and preprocess the German credit dataset."""
@@ -182,7 +155,6 @@ class Data:
         return X, Y
 
     def _load_thoraric(self):
-        """Load and preprocess the Thoraric Surgery dataset (ARFF)."""
 
         file_path = os.path.join(self.data_dir, "thoraric.arff")
         raw_data, _ = arff.loadarff(file_path)
@@ -265,8 +237,8 @@ class Data:
     
     # --- Model Loading ---
     def load_model(self):
-        """Load a pre-trained model from disk."""
-        available_models = ["SVM", "RF", "MLP", "XGB", "ResNet50"]
+
+        available_models = ["SVM", "MLP", "XGB", "ResNet50"]
         regression_data = ["parkinson", "bike"]
 
         if self.model_name not in available_models:
