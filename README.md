@@ -8,7 +8,7 @@ The codebase includes several types of cooperative games (machine learning, imag
 We recommend using a Python virtual environment:
 
 ```bash
-python3.9.12 -m venv venv
+python3.9 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
